@@ -13,6 +13,10 @@ widget = "publications_selected"
 # Order that this section will appear in.
 weight = 15
 
+
+tags_include = []
+tags_exclude = []
+
 # Show publication details (such as abstract)? (true/false)
 detailed_list = true
 

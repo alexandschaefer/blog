@@ -11,6 +11,9 @@ widget = "contact"
 # Order that this section will appear in.
 weight = 70
 
+tags_include = []
+tags_exclude = []
+
 # Automatically link email and phone?
 autolink = true
 

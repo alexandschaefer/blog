@@ -12,6 +12,9 @@ widget = "posts"
 # Order that this section will appear in.
 weight = 10
 
+tags_include = []
+tags_exclude = []
+
 # Show posts that contain the following tags. Default to any tags.
 tags = []
 

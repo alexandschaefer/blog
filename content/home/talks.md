@@ -10,6 +10,9 @@ subtitle = ""
 # Order that this section will appear in.
 weight = 30
 
+tags_include = []
+tags_exclude = []
+
 # Number of talks to list.
 count = 10
 
