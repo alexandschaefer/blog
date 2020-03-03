@@ -42,7 +42,7 @@ enableGitInfo = false
 
 [params]
   name = "Alexander Schaefer"
-  role = "Data Scientist"
+  role = "Lead Data Scientist"
   organization = "HERE Technologies"
   organization_url = "https://www.here.com"
   avatar = "alex.jpg"
@@ -287,6 +287,11 @@ enableGitInfo = false
   name = "Publications"
   url = "#publications_selected"
   weight = 4
+
+[[menu.main]]
+  name = "Book Reviews"
+  url = "#book"
+  weight = 5
 
 [[menu.main]]
   name = "Contact"
