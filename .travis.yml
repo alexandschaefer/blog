@@ -1,4 +1,4 @@
-language: go
+language: generic
 
 sudo: true
 dist: trusty
@@ -7,19 +7,21 @@ install:
   - sudo apt-get --yes install snapd
   - sudo snap install hugo
   - sudo apt-get install python3-pygments
-  - git clone --recursive -j8 https://github.com/alexandschaefer/alexandschaefer.github.io.hugo.git
-  - cd alexandschaefer.github.io.hugo
+  - git clone --recursive -j8 https://github.com/alexandschaefer/alexandschaefer.github.io.git
+  - git clone --recursive -j8 https://github.com/alexandschaefer/blog.git
+  - cd blog
 
 script:
   - /snap/bin/hugo
   - cd public
   - ls -la
+  - mv * ../alexandschaefer.github.io/
 
 deploy:
   repo: alexandschaefer/alexandschaefer.github.io
   target_branch: master
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  github_token: $deploy_token
   on:
     branch: master
