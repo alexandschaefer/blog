@@ -6,7 +6,7 @@
 
 # The URL of your website.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-publishDir = "../alexandschaefer.github.io"
+publishDir = "./public/"
 baseurl = "http://AlexAndSchaefer.github.io"
 title = "AlexAndSchaefer"
 copyright = "&copy; 2017 Alexander Schaefer"
