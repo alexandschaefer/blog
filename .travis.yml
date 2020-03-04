@@ -1,28 +1,32 @@
 language: generic
-
 sudo: true
-dist: trusty
-
+dist: bionic
+env:
+  global:
+    secure: yvBd5gkaoYki6MUhn5Lac+zpZALAo9nbWUkndITYJ4CRKEDbvkLqlBjq6+0llszCmsKxuo3XqdLy+2C/7XdmL5NH/6jk40c3CYUJQDFcJQHtnNAHWgewKFXWJGoM0PDEPZ5yGcsPS4KJH0ca8S+FuVt7oypJyYq7qeQjbPXQ6/9wGKt5qGb4iw3dewTFINuhHftd+6g+PysxiyqNwQ0vtnQ0VcbVlTHtiqNVUeyXPCKtPFFS2Hz4x0VHCP6X3afaAAUJr8tnKXzW4x6GvSS+BVKFklavQBSPb+skEAHSrS9bj5q1/3TNQyhCNAsvigDFMZSVlrzLOiWqW+hXvYBRu0flv1wm8QA7fpFOJY6k02wCAQ+c2jK35nPVSnvOe399b7ItIfN3axbgK+Fk6U9AUuUDrFBpkQ18MFnI4C9TJ3LbDQexz+eB5Vf1Gdtc+u/EKcvO/yEjHAZfZ4cLChGpy+UiPYGrWn0AsUZu9XHQGOwYptRWz7SB53iqceXADurX2dQTUbMN5FtQlLFvsIkV4nVeF9SfHykbjTc1c+m1Dx1RKioLF9z4F/45FwXZZ3FVGUOBlKCjZnrJPf5bvR+te4lLuuLs7gL84DJwYZY5npG5JutdBIt8VdVLMR+dcdvQtOdIApZf6n4ro0ZeROPwBs5JYS8o4eVZmld4EmsbTTw=
 install:
-  - sudo apt-get --yes install snapd
-  - sudo apt-get --yes install hugo
-  - sudo apt-get install python3-pygments
-  - git clone --recursive -j8 https://github.com/alexandschaefer/alexandschaefer.github.io.git
-  - git clone --recursive -j8 https://github.com/alexandschaefer/blog.git
-  - cd blog
-
+- sudo apt-get update
+- wget https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linux-64bit.deb
+- sudo dpkg -i hugo_0.51_Linux-64bit.deb
+- sudo apt-get install python3-pygments
+- git clone --recursive -j8 https://github.com/alexandschaefer/blog.git
+- git clone --branch v3.1.1 --recursive -j8 https://github.com/gcushen/hugo-academic.git themes/academic
+- git clone --recursive -j8 https://github.com/alexandschaefer/alexandschaefer.github.io ../alexandschaefer.github.io
 script:
-  - hugo
-  - cd public
-  - ls -la
-  - mv * ../alexandschaefer.github.io/
-  - cd ../alexandschaefer.github.io/
-
+- hugo
+- cd public
+- ls -la
+- cp -R * ../../alexandschaefer.github.io
+- cd ../../alexandschaefer.github.io
+- ls -la
+- pwd
 deploy:
   repo: alexandschaefer/alexandschaefer.github.io
   target_branch: master
   provider: pages
   skip_cleanup: true
-  github_token: $deploy_token
+  github_token: "$GITHUB_TOKEN"
+  keep_history: true
+  local_dir: /home/travis/build/alexandschaefer/alexandschaefer.github.io
   on:
     branch: master
